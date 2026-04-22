@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tatvan Radar Ana Sayfa</title>
+</head>
+<body>
+    <h1>Tatvan Radar'a Hoş Geldin!</h1>
+    
+    <div style="background: #f4f4f4; padding: 20px; border-radius: 10px;">
+        <h3>Profil Ayarların</h3>
+        <p>Durum: <strong>{% if user.is_private %} 🔒 GİZLİ {% else %} 🔓 HERKESE AÇIK {% endif %}</strong></p>
+        
+        <form action="/gizle" method="POST">
+            <button type="submit" style="padding: 15px; background: #ff4444; color: white; border: none; border-radius: 8px; width: 100%;">
+                {% if user.is_private %} Profilimi Herkese Aç {% else %} Profilimi Gizle {% endif %}
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+

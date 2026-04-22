@@ -29,12 +29,14 @@ with app.app_context():
 def ana_sayfa():
     return "Tatvan Radar Çalışıyor! /profil sayfasına git."
 
-@app.route('/profil')
-def profil():
+@app.route('/')
+def ana_sayfa():
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
-        return render_template('profil.html', user=user)
-    return "Giriş yapmalısınız."
+        return render_template('index.html', user=user)
+    return "Lütfen giriş yapın." # Giriş yapmamışsa bu görünür
+
+
 
 @app.route('/gizle', methods=['POST'])
 def gizle():
