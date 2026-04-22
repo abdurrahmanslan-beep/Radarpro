@@ -2,21 +2,29 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Tatvan Radar Ana Sayfa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Ayarları</title>
 </head>
-<body>
-    <h1>Tatvan Radar'a Hoş Geldin!</h1>
+<body style="text-align: center; font-family: Arial; background: #1a1a1a; color: white; padding-top: 50px;">
     
-    <div style="background: #f4f4f4; padding: 20px; border-radius: 10px;">
-        <h3>Profil Ayarların</h3>
-        <p>Durum: <strong>{% if user.is_private %} 🔒 GİZLİ {% else %} 🔓 HERKESE AÇIK {% endif %}</strong></p>
+    <div style="border: 2px solid #ff4444; margin: 20px; padding: 20px; border-radius: 15px;">
+        <h2>Kullanıcı: {{ user.username }}</h2>
         
-        <form action="/gizle" method="POST">
-            <button type="submit" style="padding: 15px; background: #ff4444; color: white; border: none; border-radius: 8px; width: 100%;">
-                {% if user.is_private %} Profilimi Herkese Aç {% else %} Profilimi Gizle {% endif %}
+        <p>Şu anki Durum: 
+            <span style="font-weight: bold; color: {% if user.is_private %}#ff4444{% else %}#00ff00{% endif %};">
+                {% if user.is_private %} 🔒 PROFİL GİZLİ (Anonim Mod) {% else %} 🔓 HERKESE AÇIK {% endif %}
+            </span>
+        </p>
+
+        <form action="/gizlilik-degistir" method="POST">
+            <button type="submit" style="background: #ff4444; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 16px; width: 100%;">
+                DURUMU DEĞİŞTİR
             </button>
         </form>
     </div>
+
+    <p style="color: #888;">* Gizli moddayken anonim sohbet edebilirsin.</p>
+
 </body>
 </html>
 
