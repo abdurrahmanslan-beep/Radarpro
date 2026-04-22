@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profilim</title>
+</head>
+<body>
+    <h1>Hoş geldin, {{ user.username }}!</h1>
+    <p>Profil Durumu: <strong>{% if user.is_private %} 🔒 GİZLİ {% else %} 🔓 HERKESE AÇIK {% endif %}</strong></p>
+    <form action="/gizle" method="POST">
+        <button type="submit" style="padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px;">
+            {% if user.is_private %} Profili Herkese Aç {% else %} Profilimi Gizle {% endif %}
+        </button>
+    </form>
+</body>
+</html>
+
